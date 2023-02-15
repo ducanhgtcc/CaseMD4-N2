@@ -61,4 +61,9 @@ public class ProductController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @GetMapping("/showByCategory/{name}")
+    public List<Product> showByNameCategory(@PathVariable String name) {
+        return productService.showProductByCategoryName(name);
+    }
+
 }

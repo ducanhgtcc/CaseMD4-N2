@@ -19,17 +19,26 @@ public class CategoryService {
     }
 
 
-    public Optional findById(int id) {
-        return Optional.empty();
+    public Optional<Category> findById(int id) {
+        return categoryRepo.findById(id);
     }
 
 
-    public void save(Object o) {
+    public void save(Category category) {
+        categoryRepo.save(category);
 
     }
 
 
     public void delete(int id) {
+        categoryRepo.deleteById(id);
+    }
 
+    public Category checkDuplicateName(String name) {
+      return categoryRepo.checkDuplicateName(name);
+    }
+
+    public List<Category> findByNameLike(String name) {
+        return categoryRepo.findByNameLike(name);
     }
 }

@@ -62,5 +62,10 @@ public class ImgController {
         imgService.delete(id);
     }
 
+    @GetMapping("/search/{name}")
+    public List<Img> findImgByProduct_Name(@PathVariable String name){
+        return imgService.findImgByProduct_Name(name);
+    }
+
 
 }

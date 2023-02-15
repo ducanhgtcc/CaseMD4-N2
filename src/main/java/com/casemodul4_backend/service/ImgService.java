@@ -35,4 +35,8 @@ public class ImgService {
         imgRepo.deleteById(id);
 
     }
+
+    public List<Img> findImgByProduct_Name(String name) {
+       return imgRepo.findImgByProduct_NameOrderByProduct(name);
+    }
 }

@@ -43,4 +43,8 @@ public class ProductService {
     public Product checkDuplicateName(String name) {
         return productRepo.checkDuplicateName(name);
     }
+
+    public List<Product> showProductByCategoryName(String name) {
+        return productRepo.findProductByCategory_Name(name);
+    }
 }
