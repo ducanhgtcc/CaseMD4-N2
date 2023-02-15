@@ -43,7 +43,7 @@ public class LoginController {
         Account account1 = accountService.findAccountByUsername(account.getUsername());
 
         //Tạo một đối tượng của class AccountToken chứa token vừa tạo ra cùng thông tin theo cùng token để hiển thị
-        AccountToken accountToken = new AccountToken(account1.getUsername(), account1.getAvatar(), token, account1.getPhone(),account1.getAddress(), account1.getRoles());
+        AccountToken accountToken = new AccountToken(account1.getId(),account1.getUsername(), account1.getAvatar(), account1.getAddress(), account1.getPhone(),token, account1.getRoles());
         return accountToken;
 
     }
