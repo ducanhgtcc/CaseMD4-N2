@@ -36,14 +36,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
-        http.authorizeRequests().antMatchers("/login", "/register","/accounts/**").permitAll() //Phân quyền cho phép các đường dẫn trên được truy cập
+        http.authorizeRequests().antMatchers("/login", "/register","/accounts/**", "/**").permitAll() //Phân quyền cho phép các đường dẫn trên được truy cập
                 .anyRequest().authenticated() //Còn lại các request khác đều phải xác thực
                 .and().csrf().disable(); //Đóng cửa cho tất cả các request còn lại (Tại đây nếu ta ".formLogin()" thì nó sẽ hiện form đăng nhập của hệ thống)
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) //Đính filter
                 .exceptionHandling();
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); //Session sẽ không được lưu
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+        http.cors();
 
     }
 
