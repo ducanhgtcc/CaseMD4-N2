@@ -11,31 +11,47 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+
+public class ProductService {
+
 public class ProductService implements InterfaceGeneral<Product> {
+
     @Autowired
     ProductRepo productRepo;
 
 
-    @Override
     public List<Product> findAll() {
         return (List<Product>) productRepo.findAll();
     }
 
-    @Override
-    public Optional<Product> findById(int id) {
-        return productRepo.findById(id);
+
+    public Product findById(int id) {
+        return productRepo.findById(id).get();
     }
 
-    @Override
+
     public void save(Product product) {
         productRepo.save(product);
 
     }
 
-    @Override
-    public void delete(int id) {
-        productRepo.deleteById(id);
 
+    public Product setStatus(int id) {
+        Product product = findById(id);
+        productRepo.findById(id).get().setStatus("hết");
+        return product;
+    }
+
+    public List<Product> findAllByNameLike(String name) {
+        return productRepo.findByNameLike(name);
+    }
+
+    public Product checkDuplicateName(String name) {
+        return productRepo.checkDuplicateName(name);
+    }
+
+    public List<Product> showProductByCategoryName(String name) {
+        return productRepo.findProductByCategory_Name(name);
     }
 
     public List<Product> showByStatus1() {

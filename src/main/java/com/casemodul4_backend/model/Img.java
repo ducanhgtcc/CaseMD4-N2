@@ -11,8 +11,9 @@ public class Img {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private String img;
 
     @ManyToOne
+
     private Product product;
 }

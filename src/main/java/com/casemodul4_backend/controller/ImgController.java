@@ -1,16 +1,21 @@
 package com.casemodul4_backend.controller;
 
 import com.casemodul4_backend.model.Img;
+import com.casemodul4_backend.model.Product;
 import com.casemodul4_backend.service.ImgService;
 import com.casemodul4_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/images")
+@RequestMapping("/admin/images")
 public class ImgController {
     @Autowired
     ImgService imgService;
@@ -24,6 +29,18 @@ public class ImgController {
     }
 
     //    Thêm ảnh
+    @PostMapping("/upImg")
+    public String upImg(@RequestParam MultipartFile fileImg) {
+        String nameImg = fileImg.getOriginalFilename();
+        try {
+            FileCopyUtils.copy(fileImg.getBytes(), new File("D:\\CodeGym\\Modul4\\caseModule4nhom2\\FE\\Ban_Noi_That_FE\\Ban_Noi_That_FE\\images\\" + nameImg));
+            return "/Ban_Noi_That_FE/images/"+nameImg;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @PostMapping
     public void create(@RequestBody Img img) {
         imgService.save(img);
@@ -48,6 +65,12 @@ public class ImgController {
         imgService.delete(id);
     }
 
+
+    @GetMapping("/search/{name}")
+    public List<Img> findImgByProduct_Name(@PathVariable String name){
+        return imgService.findImgByProduct_Name(name);
+    }
 //Hiển thị ảnh theo ID product
+
 
 }

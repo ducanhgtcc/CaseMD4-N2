@@ -10,32 +10,36 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ImgService implements InterfaceGeneral<Img>{
+public class ImgService {
     @Autowired
     ImgRepo imgRepo;
 
 
-    @Override
+
     public List<Img> findAll() {
         return (List<Img>) imgRepo.findAll();
     }
 
-    @Override
+
     public Optional<Img> findById(int id) {
         return imgRepo.findById(id);
     }
 
-    @Override
+
     public void save(Img img) {
         imgRepo.save(img);
 
     }
 
-    @Override
+
     public void delete(int id) {
         imgRepo.deleteById(id);
 
     }
+
+
+    public List<Img> findImgByProduct_Name(String name) {
+       return imgRepo.findImgByProduct_NameOrderByProduct(name);
 
     public  List<Img> findByIdProduct(int idProduct){
         List<Img> newlist = new ArrayList<>();
