@@ -14,11 +14,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Service;
 import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
+
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     AccountService accountService;
 
@@ -36,11 +39,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/**");
-        http.authorizeRequests().antMatchers("/login", "/register","/accounts/**", "/**").permitAll() //Phân quyền cho phép các đường dẫn trên được truy cập
-                .anyRequest().authenticated() //Còn lại các request khác đều phải xác thực
-                .and().csrf().disable(); //Đóng cửa cho tất cả các request còn lại (Tại đây nếu ta ".formLogin()" thì nó sẽ hiện form đăng nhập của hệ thống)
-        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) //Đính filter
-                .exceptionHandling();
+
+
+        http.authorizeRequests().antMatchers("/login", "/register","/accounts/**").permitAll(); //Phân quyền cho phép các đường dẫn trên được truy cập
+//                .anyRequest().authenticated() //Còn lại các request khác đều phải xác thực
+//                .and().csrf().disable(); //Đóng cửa cho tất cả các request còn lại (Tại đây nếu ta ".formLogin()" thì nó sẽ hiện form đăng nhập của hệ thống)
+//        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) //Đính filter
+//                .exceptionHandling();
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS); //Session sẽ không được lưu
         http.cors();

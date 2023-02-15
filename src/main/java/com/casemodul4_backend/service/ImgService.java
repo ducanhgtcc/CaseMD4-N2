@@ -5,6 +5,7 @@ import com.casemodul4_backend.repository.ImgRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +37,18 @@ public class ImgService {
 
     }
 
+
     public List<Img> findImgByProduct_Name(String name) {
        return imgRepo.findImgByProduct_NameOrderByProduct(name);
+
+    public  List<Img> findByIdProduct(int idProduct){
+        List<Img> newlist = new ArrayList<>();
+
+        for (int i=0; i< findAll().size();i++){
+            if (findAll().get(i).getProduct().getId()==idProduct){
+                newlist.add(findAll().get(i));
+            }
+        }
+        return newlist;
     }
 }

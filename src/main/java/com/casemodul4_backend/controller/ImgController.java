@@ -3,6 +3,7 @@ package com.casemodul4_backend.controller;
 import com.casemodul4_backend.model.Img;
 import com.casemodul4_backend.model.Product;
 import com.casemodul4_backend.service.ImgService;
+import com.casemodul4_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,8 @@ import java.util.List;
 public class ImgController {
     @Autowired
     ImgService imgService;
+    @Autowired
+    ProductService productService;
 
     //Hiển thị tất cả ảnh
     @GetMapping
@@ -62,10 +65,12 @@ public class ImgController {
         imgService.delete(id);
     }
 
+
     @GetMapping("/search/{name}")
     public List<Img> findImgByProduct_Name(@PathVariable String name){
         return imgService.findImgByProduct_Name(name);
     }
+//Hiển thị ảnh theo ID product
 
 
 }

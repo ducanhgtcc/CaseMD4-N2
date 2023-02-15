@@ -11,6 +11,7 @@ import java.util.List;
 //Class này chứa token và thông tin đi cùng token để hiển thị bên frontEnd (hứng dữ liệu và truyền dữ liệu đi)
 
 public class AccountToken {
+    private int id;
     private String username;
     private String avatar;
     private String address;
