@@ -1,6 +1,8 @@
 package com.casemodul4_backend.controller;
 
+import com.casemodul4_backend.model.Img;
 import com.casemodul4_backend.model.Product;
+import com.casemodul4_backend.service.ImgService;
 import com.casemodul4_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,12 @@ import java.util.List;
 public class ProductController {
     @Autowired
     ProductService productService;
+    @Autowired
+    ImgService imgService;
 //Hiển thị tất cả sản phẩm
     @GetMapping
     public List<Product> showAllProduct() {
-        return productService.findAll();
+        return productService.showByStatus("co");
     }
 //    Thêm sản phẩm
     @PostMapping
@@ -40,6 +44,14 @@ public class ProductController {
         productService.delete(id);
     }
 
-
+    @GetMapping("/find_images/{id}")
+    public List<Img> findByIdProduct(@PathVariable int id){
+        return
+        imgService.findByIdProduct(id);
+    }
+//    @GetMapping("/showByStatus")
+//    public List<Product> showByStatus() {
+//        return productService.showByStatus("co");
+//    }
 
 }

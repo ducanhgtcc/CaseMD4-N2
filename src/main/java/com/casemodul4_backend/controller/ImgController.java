@@ -2,6 +2,7 @@ package com.casemodul4_backend.controller;
 
 import com.casemodul4_backend.model.Img;
 import com.casemodul4_backend.service.ImgService;
+import com.casemodul4_backend.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,8 @@ import java.util.List;
 public class ImgController {
     @Autowired
     ImgService imgService;
+    @Autowired
+    ProductService productService;
 
     //Hiển thị tất cả ảnh
     @GetMapping
@@ -45,5 +48,6 @@ public class ImgController {
         imgService.delete(id);
     }
 
+//Hiển thị ảnh theo ID product
 
 }
