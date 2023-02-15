@@ -20,7 +20,7 @@ public class ProductController {
 //Hiển thị tất cả sản phẩm
     @GetMapping
     public List<Product> showAllProduct() {
-        return productService.findAll();
+        return productService.showByStatus("co");
     }
 //    Thêm sản phẩm
     @PostMapping
@@ -49,6 +49,9 @@ public class ProductController {
         return
         imgService.findByIdProduct(id);
     }
-
+//    @GetMapping("/showByStatus")
+//    public List<Product> showByStatus() {
+//        return productService.showByStatus("co");
+//    }
 
 }
