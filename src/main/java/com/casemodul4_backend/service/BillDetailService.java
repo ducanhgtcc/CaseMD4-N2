@@ -38,32 +38,39 @@ public class BillDetailService implements InterfaceGeneral<BillDetail> {
         billDetailRepo.deleteById(id);
 
     }
-    public  List<BillDetail> findByIdAccount(int idAccount){
+
+    public List<BillDetail> findByIdAccount(int idAccount) {
         List<BillDetail> newlist = new ArrayList<>();
 
-        for (int i=0; i< findAll().size();i++){
-            if (findAll().get(i).getBill().getAccount().getId()==idAccount){
+        for (int i = 0; i < findAll().size(); i++) {
+            if (findAll().get(i).getBill().getAccount().getId() == idAccount) {
                 newlist.add(findAll().get(i));
             }
         }
         return newlist;
     }
-    public  List<BillDetail> findByIdBill(int idBill){
+
+    public List<BillDetail> findByIdBill(int idBill) {
         List<BillDetail> newlist = new ArrayList<>();
 
-        for (int i=0; i< findAll().size();i++){
-            if (findAll().get(i).getBill().getId()==idBill){
+        for (int i = 0; i < findAll().size(); i++) {
+            if (findAll().get(i).getBill().getId() == idBill) {
                 newlist.add(findAll().get(i));
             }
         }
         return newlist;
     }
-    public  long getSumBillById(int id){
+
+    public long getSumBillById(int id) {
         long sum = 0;
-        for (int i=0; i< findByIdBill(id).size();i++){
-                sum+=findByIdBill(id).get(i).getProduct().getPrice();
+        for (int i = 0; i < findByIdBill(id).size(); i++) {
+            sum += findByIdBill(id).get(i).getProduct().getPrice();
 
         }
         return sum;
     }
+
+//    public int getIdProductBought() {
+//        billDetailRepo.b
+//    }
 }
