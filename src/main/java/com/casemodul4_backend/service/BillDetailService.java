@@ -42,10 +42,28 @@ public class BillDetailService implements InterfaceGeneral<BillDetail> {
         List<BillDetail> newlist = new ArrayList<>();
 
         for (int i=0; i< findAll().size();i++){
-            if (findAll().get(i).getProduct().getId()==idAccount){
+            if (findAll().get(i).getBill().getAccount().getId()==idAccount){
                 newlist.add(findAll().get(i));
             }
         }
         return newlist;
+    }
+    public  List<BillDetail> findByIdBill(int idBill){
+        List<BillDetail> newlist = new ArrayList<>();
+
+        for (int i=0; i< findAll().size();i++){
+            if (findAll().get(i).getBill().getId()==idBill){
+                newlist.add(findAll().get(i));
+            }
+        }
+        return newlist;
+    }
+    public  long getSumBillById(int id){
+        long sum = 0;
+        for (int i=0; i< findByIdBill(id).size();i++){
+                sum+=findByIdBill(id).get(i).getProduct().getPrice();
+
+        }
+        return sum;
     }
 }

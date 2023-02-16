@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/admin/images")
+@RequestMapping("/images")
 public class ImgController {
     @Autowired
     ImgService imgService;

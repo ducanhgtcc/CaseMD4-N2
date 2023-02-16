@@ -45,5 +45,9 @@ public class BillDetailController {
         return
                 billDetailService.findByIdAccount(id);
     }
-
+    @GetMapping("/getSumBillByIdBill/{id}")
+    public long getSumBill(@PathVariable int id){
+        return
+                billDetailService.getSumBillById(id);
+    }
 }

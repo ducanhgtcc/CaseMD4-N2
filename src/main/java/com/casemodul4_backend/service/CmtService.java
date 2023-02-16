@@ -32,7 +32,7 @@ public class CmtService implements InterfaceGeneral<Comment> {
 
     @Override
     public void save(Comment comment) {
-
+        cmtRepo.save(comment);
     }
 
     @Override
@@ -51,11 +51,12 @@ public class CmtService implements InterfaceGeneral<Comment> {
         return newlist;
     }
 
+
     public List<CommentDto> findAllCommentDtoByAccountId(Integer id) {
         final List<CommentDto> commentDtoList = new ArrayList<>();
 
         for (int i = 0; i < cmtRepo.findAllById(id).size(); i++) {
-            CommentDto commentDto=new CommentDto();
+            CommentDto commentDto = new CommentDto();
             if (cmtRepo.findAllById(id).get(i).getProduct().getId() == id) {
                 commentDto.setId(cmtRepo.findAllById(id).get(i).getId());
                 commentDto.setAccountId(cmtRepo.findAllById(id).get(i).getAccount().getId());

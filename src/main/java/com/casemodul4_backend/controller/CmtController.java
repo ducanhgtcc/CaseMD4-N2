@@ -33,10 +33,6 @@ public class CmtController {
     //    Thêm cmt
     @PostMapping
     public void create(@RequestBody Comment comment) {
-        CommentDto commentDto = new CommentDto();
-        commentDto.setAccountId(comment.getId());
-        commentDto.setId(comment.getId());
-        commentDto.setContent(comment.getContent());
         cmtService.save(comment);
     }
 

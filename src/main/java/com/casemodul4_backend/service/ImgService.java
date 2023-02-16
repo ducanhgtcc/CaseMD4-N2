@@ -15,7 +15,6 @@ public class ImgService {
     ImgRepo imgRepo;
 
 
-
     public List<Img> findAll() {
         return (List<Img>) imgRepo.findAll();
     }
@@ -39,16 +38,16 @@ public class ImgService {
 
 
     public List<Img> findImgByProduct_Name(String name) {
-       return imgRepo.findImgByProduct_NameOrderByProduct(name);
-
-    public  List<Img> findByIdProduct(int idProduct){
-        List<Img> newlist = new ArrayList<>();
-
-        for (int i=0; i< findAll().size();i++){
-            if (findAll().get(i).getProduct().getId()==idProduct){
-                newlist.add(findAll().get(i));
-            }
-        }
-        return newlist;
+        return imgRepo.findImgByProduct_NameOrderByProduct(name);
     }
-}
+        public List<Img> findByIdProduct ( int idProduct){
+            List<Img> newlist = new ArrayList<>();
+
+            for (int i = 0; i < findAll().size(); i++) {
+                if (findAll().get(i).getProduct().getId() == idProduct) {
+                    newlist.add(findAll().get(i));
+                }
+            }
+            return newlist;
+        }
+    }
