@@ -55,7 +55,7 @@ public class BillController {
     }
 
     @GetMapping("/getBillByAccountId/{id}")
-    public List<Bill> getBillByAccountId(@PathVariable int id) {
+    public List<Bill> findByIdAccount(@PathVariable int id) {
         return billService.findByIdAccount(id);
     }
 
