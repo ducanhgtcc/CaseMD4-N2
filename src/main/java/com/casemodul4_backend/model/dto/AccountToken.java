@@ -13,6 +13,7 @@ import java.util.List;
 public class AccountToken {
     private int id;
     private String username;
+    private String password;
     private String avatar;
     private String address;
     private String phone;

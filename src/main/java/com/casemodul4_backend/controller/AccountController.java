@@ -20,26 +20,30 @@ public class AccountController {
     @Autowired
     AccountService accountService;
 
+
     //Hiển thị tất cả user
     @GetMapping
     public List<Account> showAllUser() {
         return accountService.findAll();
     }
 
-    //    Thêm user
-    @PostMapping
+
+    //    Đăng kí user mới
+    @PostMapping("/user")
     public void create(@RequestBody Account account) {
         accountService.save(account);
     }
 
+
     //    Hiển thị user muốn sửa
-    @GetMapping("/{id}")
+    @GetMapping("/user/{id}")
     public Account showUserDetail(@PathVariable int id) {
         return accountService.findById(id).get();
     }
 
+
     //    Sửa user
-    @PutMapping("/{id}")
+    @PostMapping("/user/{id}")
     public void saveEdit(@RequestBody Account account) {
         accountService.save(account);
 
@@ -52,7 +56,10 @@ public class AccountController {
     }
 
 
-    @PostMapping("/upImg")
+
+    //Upload file
+
+    @PostMapping("/user/upImg")
     public String upImg(@RequestParam MultipartFile fileImg) {
         String nameImg = fileImg.getOriginalFilename();
         try {
@@ -64,7 +71,8 @@ public class AccountController {
         return null;
     }
 
-    @GetMapping("/check/{string}")
+    //Check trùng tên đăng nhập
+    @GetMapping("/user/check/{string}")
     public ResponseEntity checkDuplicate(@PathVariable String string) {
         if (accountService.checkDuplicateUserName(string) != null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
