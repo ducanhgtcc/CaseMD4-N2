@@ -11,36 +11,36 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/admin/categories")
+@RequestMapping("/categories")
 public class CategoriesController {
     @Autowired
     CategoryService catagoryService;
-    @GetMapping
+    @GetMapping("/admin")
     public List<Category> showAllCategory() {
         return catagoryService.findAll();
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public void createCategory(@RequestBody Category category) {
          catagoryService.save(category);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/{id}")
     public void showEdit(@PathVariable int id) {
         catagoryService.findById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     public void editCategory(@RequestBody Category category) {
         catagoryService.save(category);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public void deleteCategory(@PathVariable int id) {
         catagoryService.delete(id);
     }
 
-    @GetMapping("/checkname/{name}")
+    @GetMapping("/admin/checkname/{name}")
     public ResponseEntity checkName(@PathVariable String name) {
         if (catagoryService.checkDuplicateName(name) != null) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
@@ -48,7 +48,7 @@ public class CategoriesController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-@GetMapping("/search/{name}")
+@GetMapping("/admin/search/{name}")
     public List<Category> findByNameLike(@PathVariable String name) {
         return catagoryService.findByNameLike(name);
 }

@@ -14,6 +14,7 @@ public class Product {
     private String description;
     private double price;
     private String status;
+    private float avgPoint;
 
     @ManyToOne
     private Category category;
