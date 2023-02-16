@@ -30,8 +30,8 @@ public class ImgController {
     public String upImg(@RequestParam MultipartFile fileImg) {
         String nameImg = fileImg.getOriginalFilename();
         try {
-            FileCopyUtils.copy(fileImg.getBytes(), new File("D:\\CodeGym\\Modul4\\caseModule4nhom2\\FE\\Ban_Noi_That_FE\\Ban_Noi_That_FE\\images\\" + nameImg));
-            return "/Ban_Noi_That_FE/images/"+nameImg;
+            FileCopyUtils.copy(fileImg.getBytes(), new File("D:\\CodeGym\\Modul4\\caseModule4N2\\CaseMD4-N2-FE\\images\\" + nameImg));
+            return "/CaseMD4-N2-FE/images/"+nameImg;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,9 +62,9 @@ public class ImgController {
         imgService.delete(id);
     }
 
-    @GetMapping("/search/{name}")
-    public List<Img> findImgByProduct_Name(@PathVariable String name){
-        return imgService.findImgByProduct_Name(name);
+    @GetMapping("/search/{id}")
+    public List<Img> findImgByProduct_Name(@PathVariable int id){
+        return imgService.findImgByProduct_Name(id);
     }
 
 

@@ -36,7 +36,7 @@ public class ImgService {
 
     }
 
-    public List<Img> findImgByProduct_Name(String name) {
-       return imgRepo.findImgByProduct_NameOrderByProduct(name);
+    public List<Img> findImgByProduct_Name(int id) {
+       return imgRepo.findImgByProduct_Id(id);
     }
 }
