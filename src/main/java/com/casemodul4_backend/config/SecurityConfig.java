@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/**");
 
 
-        http.authorizeRequests().antMatchers("/login", "/register","/accounts/**,/**").permitAll(); //Phân quyền cho phép các đường dẫn trên được truy cập
+        http.authorizeRequests().antMatchers("/login", "/register","/accounts/**,/**","**/admin").permitAll(); //Phân quyền cho phép các đường dẫn trên được truy cập
 //                .anyRequest().authenticated() //Còn lại các request khác đều phải xác thực
 //                .and().csrf().disable(); //Đóng cửa cho tất cả các request còn lại (Tại đây nếu ta ".formLogin()" thì nó sẽ hiện form đăng nhập của hệ thống)
 //        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) //Đính filter

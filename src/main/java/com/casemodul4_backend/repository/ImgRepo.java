@@ -14,5 +14,6 @@ public interface ImgRepo extends PagingAndSortingRepository<Img, Integer> {
 //            "WHERE T.name  like concat ('%',:name,'%');")
 //    List<Img> findImgByNameProduct(@Param("name") String name);
 
-    List<Img> findImgByProduct_NameOrderByProduct(String name);
+
+    List<Img> findImgByProduct_Id(int id);
 }

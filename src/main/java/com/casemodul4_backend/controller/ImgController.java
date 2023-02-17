@@ -23,54 +23,55 @@ public class ImgController {
     ProductService productService;
 
     //Hiển thị tất cả ảnh
-    @GetMapping
+    @GetMapping("/admin")
     public List<Img> showAllImage() {
         return imgService.findAll();
     }
 
     //    Thêm ảnh
-    @PostMapping("/upImg")
+    @PostMapping("/admin/upImg")
     public String upImg(@RequestParam MultipartFile fileImg) {
         String nameImg = fileImg.getOriginalFilename();
         try {
-            FileCopyUtils.copy(fileImg.getBytes(), new File("D:\\CodeGym\\Modul4\\caseModule4nhom2\\FE\\Ban_Noi_That_FE\\Ban_Noi_That_FE\\images\\" + nameImg));
-            return "/Ban_Noi_That_FE/images/"+nameImg;
+            FileCopyUtils.copy(fileImg.getBytes(), new File("D:\\CodeGym\\Modul4\\caseModule4N2\\CaseMD4-N2-FE\\images\\" + nameImg));
+            return "/CaseMD4-N2-FE/images/" + nameImg;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     public void create(@RequestBody Img img) {
         imgService.save(img);
     }
 
     //    Hiển thị ảnh muốn sửa
-    @GetMapping("/{id}")
+    @GetMapping("/admin/{id}")
     public Img showEdit(@PathVariable int id) {
         return imgService.findById(id).get();
     }
 
     //    Sửa ảnh
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     public void saveEdit(@RequestBody Img img) {
         imgService.save(img);
 
     }
 
     //    Xóa ảnh
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public void deleteById(@PathVariable int id) {
         imgService.delete(id);
     }
 
 
-    @GetMapping("/search/{name}")
-    public List<Img> findImgByProduct_Name(@PathVariable String name){
-        return imgService.findImgByProduct_Name(name);
-    }
+    @GetMapping("/admin/search/{id}")
+    public List<Img> findImgByProduct_Name(@PathVariable int id) {
+        return imgService.findImgByProduct_Name(id);
+
 //Hiển thị ảnh theo ID product
 
 
+    }
 }

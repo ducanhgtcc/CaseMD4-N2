@@ -15,5 +15,5 @@ public interface ProductRepo extends PagingAndSortingRepository<Product, Integer
     @Query(nativeQuery = true, value = "SELECT * from product where name like concat('%',:name,'%');")
     List<Product> findByNameLike(@Param("name") String name);
 
-    List<Product> findProductByCategory_Name(String name);
+    List<Product> findProductByCategory_Id(int id);
 }

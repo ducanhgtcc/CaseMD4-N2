@@ -37,17 +37,23 @@ public class ImgService {
     }
 
 
-    public List<Img> findImgByProduct_Name(String name) {
-        return imgRepo.findImgByProduct_NameOrderByProduct(name);
+    public List<Img> findImgByProduct_Name(int id) {
+        return imgRepo.findImgByProduct_Id(id);
     }
-        public List<Img> findByIdProduct ( int idProduct){
-            List<Img> newlist = new ArrayList<>();
 
-            for (int i = 0; i < findAll().size(); i++) {
-                if (findAll().get(i).getProduct().getId() == idProduct) {
-                    newlist.add(findAll().get(i));
-                }
+//    public List<Img> findImgByProduct_Name(String name) {
+//        return imgRepo.findImgByProduct_NameOrderByProduct(name);
+//    }
+
+    public List<Img> findByIdProduct(int idProduct) {
+        List<Img> newlist = new ArrayList<>();
+
+        for (int i = 0; i < findAll().size(); i++) {
+            if (findAll().get(i).getProduct().getId() == idProduct) {
+                newlist.add(findAll().get(i));
             }
-            return newlist;
         }
+        return newlist;
     }
+
+}
