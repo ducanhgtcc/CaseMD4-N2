@@ -43,6 +43,10 @@ public class ProductController {
     public Product showEdit(@PathVariable int id) {
         return productService.findById(id);
     }
+    @GetMapping("/user/{id}")
+    public Product showEdit1(@PathVariable int id) {
+        return productService.findById(id);
+    }
 
     //    Sửa sản phẩm
     @PutMapping("/admin/{id}")
@@ -77,11 +81,10 @@ public class ProductController {
         return productService.showProductByCategory_Id(id);
     }
 
-//    @GetMapping("/find_images/{id}")
-//    public List<Img> findByIdProduct(@PathVariable int id){
-//        return
-//        imgService.findById(id);
-//    }
+    @GetMapping("/find_images/{id}")
+    public List<Img> findByIdProduct(@PathVariable int id){
+        return imgService.findByIdProduct(id);
+    }
 //    @GetMapping("/showByStatus")
 //    public List<Product> showByStatus() {
 //        return productService.showByStatus("co");

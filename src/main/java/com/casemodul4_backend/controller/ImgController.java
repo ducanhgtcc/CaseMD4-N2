@@ -27,6 +27,10 @@ public class ImgController {
     public List<Img> showAllImage() {
         return imgService.findAll();
     }
+    @GetMapping("/user")
+    public List<Img> showAllImageUser() {
+        return imgService.findAll();
+    }
 
     //    Thêm ảnh
     @PostMapping("/admin/upImg")
@@ -68,6 +72,14 @@ public class ImgController {
 
     @GetMapping("/admin/search/{id}")
     public List<Img> findImgByProduct_Name(@PathVariable int id) {
+        return imgService.findImgByProduct_Name(id);
+
+//Hiển thị ảnh theo ID product
+
+
+    }
+    @GetMapping("/user/{id}")
+    public List<Img> findImgByIdProduct(@PathVariable int id) {
         return imgService.findImgByProduct_Name(id);
 
 //Hiển thị ảnh theo ID product

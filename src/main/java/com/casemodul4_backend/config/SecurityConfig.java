@@ -14,12 +14,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
-
+@Component
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
